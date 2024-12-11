@@ -11,8 +11,8 @@ export const useLogin = (navigation: { navigate: (path: string) => void }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [messageModal, setMessageModal] = useState<string>("");
   const [inputs, setInputs] = useState<LoginInputs>({
-    username: "",
-    password: "",
+    username: "mor_2314",
+    password: "83r5^_",
   });
   const [errors, setErrors] = useState<LoginInputs>({
     username: "",

@@ -4,6 +4,7 @@ import { NativeBaseProvider } from "native-base";
 import CreateUser from "./pages/create-user";
 import Login from "./pages/login";
 import Products from "./pages/products";
+import ProductDetail from "./pages/products/product-detail";
 import AppContext from "./utils/AppContext";
 import { useInitialStateAppContext } from "./utils/AppContext/useInitialStateAppContext";
 
@@ -34,15 +35,14 @@ const Routes = () => {
       <AppContext.Provider value={initialState}>
         <NativeBaseProvider>
           <Stack.Navigator
-            initialRouteName="LoginUser"
             screenOptions={{
               headerTitle: "Inicio de Sesión",
               headerTintColor: "#000",
               contentStyle: { backgroundColor: "#f1f1f1" },
               headerBackVisible: false,
             }}
+            initialRouteName="LoginUser"
           >
-            <Stack.Screen name="LoginUser" component={Login} />
             <Stack.Screen
               name="Products"
               options={{
@@ -52,6 +52,7 @@ const Routes = () => {
               }}
               component={Products}
             />
+            <Stack.Screen name="LoginUser" component={Login} />
             <Stack.Screen
               name="CreateUser"
               options={{
@@ -60,6 +61,15 @@ const Routes = () => {
                 headerBackVisible: false,
               }}
               component={CreateUser}
+            />
+            <Stack.Screen
+              name="ProductDetail"
+              options={{
+                headerTitle: "Detalle producto",
+                headerBackButtonMenuEnabled: false,
+                headerBackVisible: false,
+              }}
+              component={ProductDetail}
             />
           </Stack.Navigator>
         </NativeBaseProvider>

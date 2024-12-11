@@ -2,13 +2,8 @@ import { faLock, faLockOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { Button } from "native-base";
 import React from "react";
-import {
-  ActivityIndicator,
-  Text,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import Loader from "../../components/Loader";
 import WarningModal from "../../components/Modal/WarningModal";
 import { useLogin } from "../../hooks/useLogin";
 import { NavigationI } from "../../interfaces/login.interface";
@@ -38,9 +33,7 @@ const Login: React.FC<NavigationI> = ({ navigation }) => {
   return (
     <TouchableWithoutFeedback>
       {showLoader ? (
-        <View style={styles.contentLoader}>
-          <ActivityIndicator size="large" color="#09f" />
-        </View>
+        <Loader />
       ) : (
         <View style={styles.main}>
           {showModal && (
