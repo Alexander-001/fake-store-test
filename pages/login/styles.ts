@@ -35,7 +35,6 @@ export const styles = StyleSheet.create({
     color: "rgb(17 24 39)",
   },
   contentInput: {
-    position: "relative",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -65,10 +64,14 @@ export const styles = StyleSheet.create({
   },
   containerButton: {
     marginTop: 30,
-    width: "90%",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   button: {
     backgroundColor: "rgb(29 78 216)",
+    width: "90%",
   },
   errorMessage: {
     color: "rgb(127 29 29)",
