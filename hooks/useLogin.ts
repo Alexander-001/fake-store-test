@@ -5,7 +5,7 @@ import AppContext from "../utils/AppContext";
 import { StateAppContext } from "../utils/AppContext/useInitialStateAppContext";
 
 export const useLogin = (navigation: { navigate: (path: string) => void }) => {
-  const { auth, token }: StateAppContext = useContext<any>(AppContext);
+  const { setToken, token }: StateAppContext = useContext<any>(AppContext);
   const [showLoader, setShowLoader] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -20,7 +20,6 @@ export const useLogin = (navigation: { navigate: (path: string) => void }) => {
   });
 
   const onChangeInput = (name: string, value: string) => {
-    console.log(value);
     setErrors((prevState) => ({
       ...prevState,
       [name]: "",
@@ -65,7 +64,7 @@ export const useLogin = (navigation: { navigate: (path: string) => void }) => {
         return;
       }
       if (data.token !== "") {
-        auth(data.token);
+        setToken(data.token);
         navigation.navigate("Products");
         setShowLoader(false);
       }

@@ -11,15 +11,13 @@ export const loginService = async (bodyParams: LoginService) => {
     const response = await serviceRequest("auth/login", "POST", bodyParams);
     data = { token: response.token || "", messageError: "", error: false };
   } catch (error: any) {
+    data.error = true;
+    data.token = "";
     if (error.status === 401) {
       data.messageError = "Usuario o contraseña incorrectos";
+      return { data };
     }
-    data = {
-      token: "",
-      messageError: "Hubo un error en el servidor",
-      error: true,
-    };
+    data.messageError = "Hubo un error en el servidor";
   }
-
   return { data };
 };
