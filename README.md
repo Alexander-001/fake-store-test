@@ -22,3 +22,7 @@ Este proyecto fue realizado con React Native utilizando el framework Expo.
 - java: openjdk version "21.0.4" 2024-07-16 LTS
 - node: v22.12.0
 - yarn: 1.22.10
+
+## Usuario para login (https://fakestoreapi.com/docs)
+- username: mor_2314
+- password: 83r5^_
