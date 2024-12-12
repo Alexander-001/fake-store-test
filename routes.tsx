@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NativeBaseProvider } from "native-base";
-import CreateUser from "./pages/create-user";
+import CloseSessionButton from "./components/CloseSessionButton";
 import Login from "./pages/login";
 import Products from "./pages/products";
 import ProductDetail from "./pages/products/product-detail";
@@ -38,37 +38,30 @@ const Routes = () => {
             screenOptions={{
               headerTitle: "Inicio de Sesión",
               headerTintColor: "#000",
-              contentStyle: { backgroundColor: "#f1f1f1" },
+              contentStyle: { backgroundColor: "rgb(17 24 39)" },
               headerBackVisible: false,
             }}
             initialRouteName="LoginUser"
           >
+            <Stack.Screen name="LoginUser" component={Login} />
             <Stack.Screen
               name="Products"
-              options={{
+              options={({ navigation }) => ({
                 headerTitle: "Productos",
                 headerBackButtonMenuEnabled: false,
                 headerBackVisible: false,
-              }}
+                headerRight: () => CloseSessionButton(navigation),
+              })}
               component={Products}
-            />
-            <Stack.Screen name="LoginUser" component={Login} />
-            <Stack.Screen
-              name="CreateUser"
-              options={{
-                headerTitle: "Crear Usuario",
-                headerBackButtonMenuEnabled: false,
-                headerBackVisible: false,
-              }}
-              component={CreateUser}
             />
             <Stack.Screen
               name="ProductDetail"
-              options={{
+              options={({ navigation }) => ({
                 headerTitle: "Detalle producto",
-                headerBackButtonMenuEnabled: false,
-                headerBackVisible: false,
-              }}
+                headerBackButtonMenuEnabled: true,
+                headerBackVisible: true,
+                headerRight: () => CloseSessionButton(navigation),
+              })}
               component={ProductDetail}
             />
           </Stack.Navigator>

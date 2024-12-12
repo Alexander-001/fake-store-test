@@ -5,9 +5,9 @@ import AppContext from "../utils/AppContext";
 import { StateAppContext } from "../utils/AppContext/useInitialStateAppContext";
 
 export const useProducts = (navigation: {
-  navigate: (path: string) => void;
+  navigate: (path: string, product?: Product) => void;
 }) => {
-  const { token, auth }: StateAppContext = useContext<any>(AppContext);
+  const { token }: StateAppContext = useContext<any>(AppContext);
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Array<Product>>([]);
   const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -17,6 +17,8 @@ export const useProducts = (navigation: {
   const [selectedCategory, setSelectedCategory] = useState<{
     category: string;
   }>({ category: "Todas" });
+
+  const isActiveAllTab: boolean = selectedCategory.category === "Todas";
 
   useEffect(() => {
     getProducts();
@@ -51,14 +53,6 @@ export const useProducts = (navigation: {
     setShowLoader(false);
   };
 
-  const onClickDeleteToken = () => {
-    auth("");
-  };
-
-  const openCloseModal = () => {
-    setShowModal(!showModal);
-  };
-
   const onClickCategory = (category: { category: string }) => {
     setSelectedCategory(category);
     if (category.category === "Todas") {
@@ -71,7 +65,13 @@ export const useProducts = (navigation: {
     }
   };
 
-  const isActiveAllTab = selectedCategory.category === "Todas";
+  const openCloseModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const onClickProduct = (product: Product) => {
+    navigation.navigate("ProductDetail", product);
+  };
 
   return {
     //* Variables
@@ -85,8 +85,8 @@ export const useProducts = (navigation: {
     isActiveAllTab,
 
     //* Functions
-    onClickDeleteToken,
     openCloseModal,
     onClickCategory,
+    onClickProduct,
   };
 };

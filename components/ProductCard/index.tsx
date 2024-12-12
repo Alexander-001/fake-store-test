@@ -6,16 +6,20 @@ import { styles } from "./styles";
 
 interface ProductCard {
   product: Product;
+  onClickProduct: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCard> = ({
-  product: { image, title, price },
-}) => {
+const ProductCard: React.FC<ProductCard> = ({ product, onClickProduct }) => {
+  const { image, title, price } = product;
   return (
-    <View style={styles.card}>
+    <View
+      onStartShouldSetResponder={() => true}
+      onResponderRelease={() => onClickProduct(product)}
+      style={styles.card}
+    >
       <Image style={styles.image} src={image} alt="" />
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.price}>${price}</Text>
+      <Text style={styles.price}>{price}</Text>
     </View>
   );
 };

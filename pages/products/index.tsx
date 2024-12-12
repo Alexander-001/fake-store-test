@@ -10,11 +10,10 @@ import Loader from "../../components/Loader";
 import WarningModal from "../../components/Modal/WarningModal";
 import ProductCard from "../../components/ProductCard";
 import { useProducts } from "../../hooks/useProducts";
-import { NavigationI } from "../../interfaces/login.interface";
 import { isLoggedIn } from "../../utils";
 import { styles } from "./styles";
 
-const Products: React.FC<NavigationI> = ({ navigation }) => {
+const Products: React.FC<any> = ({ navigation }) => {
   const {
     //* Variables
     token,
@@ -29,6 +28,7 @@ const Products: React.FC<NavigationI> = ({ navigation }) => {
     //* Functions
     openCloseModal,
     onClickCategory,
+    onClickProduct,
   } = useProducts(navigation);
 
   isLoggedIn(token, navigation);
@@ -38,7 +38,6 @@ const Products: React.FC<NavigationI> = ({ navigation }) => {
         <Loader />
       ) : (
         <ScrollView style={styles.list}>
-          <Text style={styles.title}>Productos disponibles</Text>
           <View style={styles.main}>
             {showModal && (
               <WarningModal
@@ -87,7 +86,11 @@ const Products: React.FC<NavigationI> = ({ navigation }) => {
             </ScrollView>
             <View style={styles.contentProducts}>
               {filteredProducts.map((element, key) => (
-                <ProductCard product={element} key={key} />
+                <ProductCard
+                  product={element}
+                  key={key}
+                  onClickProduct={onClickProduct}
+                />
               ))}
             </View>
           </View>

@@ -6,11 +6,10 @@ import { Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 import Loader from "../../components/Loader";
 import WarningModal from "../../components/Modal/WarningModal";
 import { useLogin } from "../../hooks/useLogin";
-import { NavigationI } from "../../interfaces/login.interface";
 import { isLoggedIn } from "../../utils";
 import { styles } from "./styles";
 
-const Login: React.FC<NavigationI> = ({ navigation }) => {
+const Login: React.FC<any> = ({ navigation }) => {
   const {
     //* Variables
     token,

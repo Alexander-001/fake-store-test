@@ -12,7 +12,7 @@ export const initialState: InitialStateAppContext = {
 export const useInitialStateAppContext = () => {
   const [state, setState] = useState<InitialStateAppContext>(initialState);
 
-  const auth = (token: string) => {
+  const setToken = (token: string) => {
     setState((prevState) => ({ ...prevState, token }));
   };
 
@@ -23,7 +23,7 @@ export const useInitialStateAppContext = () => {
     token: state.token,
 
     //* Functions
-    auth,
+    setToken,
   };
 };
 

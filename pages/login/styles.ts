@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     margin: 30,
     alignItems: "center",
     borderRadius: 10,
-    backgroundColor: "rgb(17 24 39)",
+    backgroundColor: "#f1f1f1",
     justifyContent: "center",
     marginTop: 120,
     marginBottom: 120,
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 17,
     fontWeight: "800",
-    color: "#fff",
+    color: "rgb(17 24 39)",
     width: "100%",
     textAlign: "left",
     paddingLeft: 20,
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     marginTop: 5,
     paddingLeft: 10,
     marginHorizontal: 12,
-    color: "#fff",
+    color: "rgb(17 24 39)",
   },
   contentInput: {
     position: "relative",
@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "rgb(29 78 216)",
   },
   errorMessage: {
-    color: "rgb(254 202 202)",
+    color: "rgb(127 29 29)",
     width: "90%",
     marginTop: 10,
     paddingLeft: 5,
